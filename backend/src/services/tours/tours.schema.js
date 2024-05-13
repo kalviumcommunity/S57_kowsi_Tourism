@@ -64,9 +64,9 @@ export const toursQuerySchema = Type.Intersect(
   [
     querySyntax(toursQueryProperties),
     // Add additional query properties here
-    Type.Object({}, { additionalProperties: false })
+    Type.Object({}, { additionalProperties: true })
   ],
-  { additionalProperties: false }
+  { additionalProperties: true }
 )
 export const toursQueryValidator = getValidator(toursQuerySchema, queryValidator)
 export const toursQueryResolver = resolve({})

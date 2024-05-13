@@ -33,7 +33,7 @@ export const tours = (app) => {
     },
     before: {
       all: [schemaHooks.validateQuery(toursQueryValidator), schemaHooks.resolveQuery(toursQueryResolver)],
-      find: [prepareForRegexSearch],
+      find: [ filterByLocation],
       get: [],
       create: [schemaHooks.validateData(toursDataValidator), schemaHooks.resolveData(toursDataResolver)],
       patch: [schemaHooks.validateData(toursPatchValidator), schemaHooks.resolveData(toursPatchResolver)],
@@ -49,10 +49,6 @@ export const tours = (app) => {
     }
   })
 
-  function prepareForRegexSearch(context){
-    // console.log("context.params.query", context.params.query)
-    return context
-  }
 
   async function addReviewSummary(context) {
 
@@ -86,5 +82,20 @@ export const tours = (app) => {
       }
     }
     return context
+  }
+
+  async function filterByLocation(context) {
+    
+    let {title} = context.params.query
+    
+    if(title){
+      
+      context.params.query.title = {
+        $regex: new RegExp(title, 'i')
+      }
+      
+    }
+
+    return context;
   }
 }
