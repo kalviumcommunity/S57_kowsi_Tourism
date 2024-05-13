@@ -20,6 +20,9 @@ export default function AllTours() {
 
       let query = {};
       
+      if (location) {
+        query.title = location;
+      }
       if (distance) {
         query.distance = {
           $lte: distance

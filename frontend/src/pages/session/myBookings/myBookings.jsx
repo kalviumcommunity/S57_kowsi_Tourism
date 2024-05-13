@@ -31,53 +31,57 @@ export default function MyBookings() {
       <div className="my-bookings">
         <h1>My Bookings</h1>
         <div className="forms">
-          {bookingsData.length==0 && (<p>No bookings yet</p>)}
+          {bookingsData.length == 0 && <p>No bookings yet</p>}
           {bookingsData.map((bookingData) => {
             return (
-              <div className="form">
+              <div className="form" key={bookingData._id}>
                 <table>
-                  <tr>
-                    <td><b>Booking ID:</b></td>
-                    <td>{bookingData._id}</td>
-                  </tr>
-                  <TourDetails />
+                  <tbody>
+                    <tr>
+                      <td>
+                        <b>Booking ID:</b>
+                      </td>
+                      <td>{bookingData._id}</td>
+                    </tr>
+                    <TourDetails tourId={bookingData.tourId} />
 
-                  <tr>
-                    <td>Full Name</td>
-                    <td>{bookingData.fullName}</td>
-                  </tr>
-                  <tr>
-                    <td>Phone Number</td>
-                    <td>{bookingData.phoneNumber}</td>
-                  </tr>
-                  <tr>
-                    <td>Tour Date</td>
-                    <td>{bookingData.tourDate}</td>
-                  </tr>
-                  <tr>
-                    <td>Booking Date</td>
-                    <td>
-                      {new Date(
-                        parseInt(bookingData.bookingDate)
-                      ).toLocaleDateString()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Price per person</td>
-                    <td>${bookingData.pricePerPerson}</td>
-                  </tr>
-                  <tr>
-                    <td>Guests Count</td>
-                    <td>{bookingData.numOfGuests}</td>
-                  </tr>
-                  <tr>
-                    <td>Service Charge</td>
-                    <td>${bookingData.serviceCharge}</td>
-                  </tr>
-                  <tr>
-                    <td>Total Paid</td>
-                    <td>${bookingData.totalPaid}</td>
-                  </tr>
+                    <tr>
+                      <td>Full Name</td>
+                      <td>{bookingData.fullName}</td>
+                    </tr>
+                    <tr>
+                      <td>Phone Number</td>
+                      <td>{bookingData.phoneNumber}</td>
+                    </tr>
+                    <tr>
+                      <td>Tour Date</td>
+                      <td>{bookingData.tourDate}</td>
+                    </tr>
+                    <tr>
+                      <td>Booking Date</td>
+                      <td>
+                        {new Date(
+                          parseInt(bookingData.bookingDate)
+                        ).toLocaleDateString()}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Price per person</td>
+                      <td>${bookingData.pricePerPerson}</td>
+                    </tr>
+                    <tr>
+                      <td>Guests Count</td>
+                      <td>{bookingData.numOfGuests}</td>
+                    </tr>
+                    <tr>
+                      <td>Service Charge</td>
+                      <td>${bookingData.serviceCharge}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Paid</td>
+                      <td>${bookingData.totalPaid}</td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             );
@@ -90,15 +94,13 @@ export default function MyBookings() {
   }
 }
 
-function TourDetails() {
+function TourDetails({ tourId }) {
   const [tourDetails, setTourDetails] = useState({});
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await app
-          .service("tours")
-          .get("66181037754ab731dcb2ccbf");
+        const response = await app.service("tours").get(tourId);
         setTourDetails(response);
       } catch (error) {
         console.log(error);
@@ -110,11 +112,11 @@ function TourDetails() {
     <>
       <tr>
         <td>Location Name</td>
-        <td>{tourDetails?.title}</td>
+        <td>{!tourDetails ? <p>Loading...</p> : tourDetails.title}</td>
       </tr>
       <tr>
         <td>City</td>
-        <td>{tourDetails?.city}</td>
+        <td>{!tourDetails ? <p>Loading...</p> : tourDetails.city}</td>
       </tr>
     </>
   );
