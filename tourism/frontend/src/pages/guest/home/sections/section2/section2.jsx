@@ -40,31 +40,31 @@ export default function Section2({defaults}) {
       console.log(error);
     }
   }
-  return (
+  return(
     <div className="section-2">
       <div className="search-bar center">
         <div className="search-filters center">
           <div className="location center">
             <div className="icon">
-              <IoLocationSharp />
+              <IoLocationSharp/>
             </div>
             <div className="main center">
               <p>Location</p>
-              <input
+              <input 
                 type="text"
                 placeholder="Where are you going?"
                 ref={locationRef}
-                defaultValue={defaults?.location || ""}
+                defaultValue={defaults?.location || ""} 
               />
             </div>
           </div>
           <div className="distance center">
             <div className="icon">
-              <RiPinDistanceFill />
+              <RiPinDistanceFill/>
             </div>
             <div className="main center">
               <p>Max Distance</p>
-              <input
+              <input 
                 type="number"
                 placeholder="Distance km"
                 ref={maxDistanceRef}
@@ -76,11 +76,11 @@ export default function Section2({defaults}) {
           </div>
           <div className="people center">
             <div className="icon">
-              <IoPeopleSharp />
+              <IoPeopleSharp/>
             </div>
             <div className="main center">
-              <p>Max people</p>
-              <input
+              <p>Max People</p>
+              <input 
                 type="number"
                 placeholder="0 people"
                 ref={maxPeopleRef}
@@ -91,7 +91,7 @@ export default function Section2({defaults}) {
           </div>
         </div>
         <div className="search-action" onClick={searchTours}>
-          <IoSearchSharp />
+          <IoSearchSharp/>
         </div>
       </div>
     </div>
