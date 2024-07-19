@@ -36,7 +36,7 @@
   "scripts": {
     "start": "node src",
     "dev": "nodemon src/",
-    
+    "build": "npm i",
     "prettier": "npx prettier \"**/*.js\" --write",
     "mocha": "cross-env NODE_ENV=test mocha test/ --recursive --exit",
     "test": "npm run mocha",
