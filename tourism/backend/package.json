@@ -35,7 +35,7 @@
   "type": "module",
   "scripts": {
     "start": "node src",
-    "dev": "nodemon src/",
+    "dev": "npm run dev",
     "prettier": "npx prettier \"**/*.js\" --write",
     "mocha": "cross-env NODE_ENV=test mocha test/ --recursive --exit",
     "test": "npm run mocha",
