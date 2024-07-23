@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "S57_kowsi_Tourism",
+			"path": "../../.."
+		},
+		{
+			"name": "Server",
+			"path": "../../../../S57_kowsika_Travel/Server"
+		}
+	],
+	"settings": {}
+}
