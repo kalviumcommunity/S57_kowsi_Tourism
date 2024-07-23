@@ -12,7 +12,7 @@ import {
   toursQueryResolver
 } from './tours.schema.js'
 import { ToursService, getOptions } from './tours.class.js'
-import { toursPath, toursMethods } from './tours.shared.js'
+import { toursPath, toursMethods} from './tours.shared.js'
 
 export * from './tours.class.js'
 export * from './tours.schema.js'

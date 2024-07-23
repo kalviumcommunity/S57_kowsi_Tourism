@@ -76,9 +76,9 @@ export default function Login() {
             />
             <div className="btn" onClick={loginUser}>Login</div>
             <p className="go-to-login">
-              Dont have an account?{" "}
+              Don't have an account?{" "}
               <Link className="link" to="/register">
-                Register
+              Register
               </Link>
             </p>
           </div>
